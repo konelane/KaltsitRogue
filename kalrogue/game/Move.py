@@ -231,7 +231,7 @@ class Move:
         '''
         position_save = self.read_save.story_node_dict[node_obj.node_name][node_obj.node_name]["position_save"]
         node_obj.position = position_save
-        node_obj.node_json[node_obj.node_name]['position_save'] = position_save
+        node_obj.node_json['position_save'] = position_save
         return node_obj
 
     def nextMoveAction(self, node_obj: Union[ChoiceNode, DiceNode]):
@@ -243,7 +243,7 @@ class Move:
         while not node_obj.isNodeDone():
             # 获取next move
             next_move_order = node_obj.nextMove(self.read_save)
-            print('执行node', node_obj.node_name, node_obj.node_json[node_obj.node_name]['node_type'])
+            print('执行node', node_obj.node_name, node_obj.node_json['node_type'])
             if next_move_order == 'choice':
                 outtext += node_obj.specialText()
                 break
@@ -317,7 +317,7 @@ class Move:
         if self.read_save.is_end == 1:
             return True
 
-        if node_obj.node_json[node_obj.node_name]["node_type"] == 'endding':
+        if node_obj.node_json["node_type"] == 'endding':
             self.read_save.is_end = 1 # 更改游戏结局情况
             self.read_save.endding_id = node_obj.updateEndding()  # 更新endding_id
             return True
